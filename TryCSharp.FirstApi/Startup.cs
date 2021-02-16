@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TryCSharp.FirstApi.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace TryCSharp.FirstApi
 {
@@ -26,7 +28,10 @@ namespace TryCSharp.FirstApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //adding the univdbcontext, using pool type(checks inctances from pool, if there is one in it it returns thta one instead of creating a new one)
 
+            //services.AddDbContextPool<UniversityDBcontext>( options => options.UseSqlServer(Configuration.GetConnectionString("")));
+            services.AddSingleton<IStudentRepository, StudentRepository>(); //config for service
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
