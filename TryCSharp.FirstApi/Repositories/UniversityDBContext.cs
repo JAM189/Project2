@@ -16,7 +16,8 @@ namespace TryCSharp.FirstApi.Repositories
         }
 
         //constructor class inheriting from base class, passing unidbcontext as parameter and naming it as options
-        public UniversityDBcontext(DbContextOptions<UniversityDBcontext> options) : base(options)
+        public UniversityDBcontext(DbContextOptions<UniversityDBcontext> options) : 
+            base(options)
         {
             //options builder coniguration services ....done in the startup.cs instead of a config service method here
             //to use usesqlserver method, micro.sql package was installed

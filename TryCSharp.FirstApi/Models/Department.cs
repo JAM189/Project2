@@ -15,9 +15,6 @@ namespace TryCSharp.FirstApi.Models
         // Navigation Property
         public List<Student> Students { get; set; }
 
-        public static implicit operator Department(string v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

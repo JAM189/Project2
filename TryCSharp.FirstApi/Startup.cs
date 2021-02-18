@@ -30,8 +30,8 @@ namespace TryCSharp.FirstApi
         {
             //adding the univdbcontext, using pool type(checks inctances from pool, if there is one in it it returns thta one instead of creating a new one)
 
-            //services.AddDbContextPool<UniversityDBcontext>( options => options.UseSqlServer(Configuration.GetConnectionString("")));
-            services.AddSingleton<IStudentRepository, StudentRepository>(); //config for service
+            services.AddDbContext<UniversityDBcontext>( options => options.UseSqlServer(Configuration.GetConnectionString("UniversityDBContext")));
+            services.AddScoped<IStudentRepository, StudentRepository>(); //config for service
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
