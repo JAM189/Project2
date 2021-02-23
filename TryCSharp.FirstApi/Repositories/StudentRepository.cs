@@ -13,6 +13,7 @@ namespace TryCSharp.FirstApi.Repositories
 
         //for construction injection
         private readonly UniversityDBcontext univDB;
+        //private readonly Student student;
         public StudentRepository(UniversityDBcontext universityDBcontext)
         {
             univDB = universityDBcontext;
@@ -29,11 +30,32 @@ namespace TryCSharp.FirstApi.Repositories
             return this.studentlist.FirstOrDefault(e => e.Id == id);
         }
 
-        public void Insert(Student student)
+        public void InsertStudent(Student student)
         {
             univDB.Students.Add(student);
             univDB.SaveChanges();
         }
+
+        public void UpdateStudent(Student student, Student entity)
+        {
+           student.Id = entity.Id;
+           student.Name = entity.Name;
+           student.Gender = entity.Gender;
+           student.Department = entity.Department;
+
+            univDB.SaveChanges();
+        }
+
+        public void DeleteStudent(Student entity)
+        {
+               univDB.Students.Remove(entity);
+               univDB.SaveChanges();
+            
+        }
+
+
+
+
 
         ////method for dept
         //public List<Models.Department> GetDepartments()

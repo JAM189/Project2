@@ -36,6 +36,7 @@ namespace TryCSharp.FirstApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TryCSharp.FirstApi", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line is added while fixing undefined swagger issues, and this fixed it
             });
         }
 
@@ -49,6 +50,8 @@ namespace TryCSharp.FirstApi
 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TryCSharp.FirstApi v1"));
+          
+            //  app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
 
